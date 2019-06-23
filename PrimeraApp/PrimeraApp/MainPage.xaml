@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodel="clr-namespace:PrimeraApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="PrimeraApp.MainPage" BackgroundColor="LightBlue">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0">
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ContentPage.BindingContext>
+        <viewmodel:MainPageViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <ListView ItemsSource="{Binding Surveys}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" Detail="{Binding FavoriteFood}" DetailColor="DarkBlue"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="+" Command="{Binding AddCommand}" TextColor="White" BorderColor="AliceBlue" BackgroundColor="DarkBlue"/>
+    </StackLayout>
+</ContentPage>
